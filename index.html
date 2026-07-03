@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Golf Avenue | Site-C, Greater Noida | Commercial Retail &amp; Studio Apartments</title>
+<meta name="description" content="SVG Golf Avenue — a 3 lakh sq.ft. business &amp; entertainment landmark in Site-C, Greater Noida. Retail shops, studio apartments &amp; a 5-screen multiplex. Starting ₹40 Lac*.">
+<link rel="canonical" href="https://svggolfavenue.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SVG Golf Avenue | Site-C, Greater Noida">
+<meta property="og:description" content="A 3 lakh sq.ft. business &amp; entertainment landmark — retail, dining, multiplex &amp; studio apartments. Starting ₹40 Lac*.">
+<meta property="og:image" content="https://svggolfavenue.com/images/svg-golf-avenue.jpeg">
+<meta property="og:url" content="https://svggolfavenue.com/">
+<meta property="og:site_name" content="SVG Golf Avenue">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SVG Golf Avenue | Site-C, Greater Noida">
+<meta name="twitter:description" content="Retail shops, studio apartments &amp; a 5-screen multiplex in Greater Noida. Starting ₹40 Lac*.">
+<meta name="twitter:image" content="https://svggolfavenue.com/images/svg-golf-avenue.jpeg">
+
+<!-- Performance: connections -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://svggolfavenue.com" crossorigin>
+<link rel="preload" as="image" href="https://svggolfavenue.com/images/svg-golf-avenue.jpeg" fetchpriority="high">
+
+<!-- Fonts: loaded non-render-blocking (preload + swap-in), identical result once loaded -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,800&amp;family=Inter:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&amp;display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,800&amp;family=Inter:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,800&amp;family=Inter:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&amp;display=swap" rel="stylesheet"></noscript>
+
+<style>
+/* =========================================================================
+   SVG GOLF AVENUE — STYLESHEET
+   Table of contents:
+   1. Design tokens
+   2. Reset & base
+   3. Utilities & typography
+   4. Buttons
+   5. Topbar & header
+   6. Hero
+   7. Marquee & notice bar
+   8. Scarcity bar
+   9. Section shell (about / pricing / why / floors / showcase / gallery /
+      location / amenities / developer / roi / site-visit / final-cta / faq)
+   10. Footer
+   11. Floating buttons & mobile sticky CTA
+   12. Modals & popups
+   13. Live activity feed
+   14. Animations
+   15. Accessibility & reduced motion
+   ========================================================================= */
+
+/* ---------- 1. Design tokens ---------- */
+:root{
+  /* brand palette — unchanged from original */
+  --green-deep:#0D0628;
+  --green-mid:#1A0A52;
+  --gold:#E3B43D;
+  --gold-bright:#FFD700;
+  --gold-soft:#F0DCA0;
+  --purple-deep:#0D0628;
+  --purple-mid:#1A0A52;
+  --purple-bright:#6D28D9;
+  --purple-electric:#8B5CF6;
+  --purple-neon:#C084FC;
+  --ivory:#F7F2E7;
+  --sand:#EFE6CF;
+  --charcoal:#0D0D0D;
+  --red:#C62828;
+  --red-bright:#E53935;
+  --green-live:#25D366;
+  --line:rgba(227,180,61,.3);
+
+  /* gradients (reused, not redeclared per-section) */
+  --grad-dark:linear-gradient(135deg,#0A0520 0%,#1A0A52 50%,#0D0628 100%);
+  --grad-gold:linear-gradient(90deg,var(--gold),var(--gold-bright));
+  --grad-gold-btn:linear-gradient(90deg,#B8860B 0%,var(--gold-bright) 45%,#FFE44D 55%,var(--gold-bright) 100%);
+  --grad-red:linear-gradient(90deg,var(--red),var(--red-bright));
+  --grad-purple:linear-gradient(135deg,#4A0080,#7C3AED);
+
+  /* elevation */
+  --shadow-lg:0 30px 60px -15px rgba(0,0,0,.55);
+  --shadow-gold:0 0 40px rgba(255,215,0,.18);
+  --shadow-purple:0 0 40px rgba(139,92,246,.2);
+
+  /* motion */
+  --ease:cubic-bezier(.4,0,.2,1);
+  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+  --dur-fast:.2s;
+  --dur-med:.4s;
+
+  /* layout */
+  --content-w:1180px;
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:16px;
+}
+
+/* ---------- 2. Reset & base ---------- */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+}
+body{
+  background:var(--ivory);
+  color:var(--charcoal);
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+input,select{font-family:inherit;}
+::selection{background:var(--gold);color:#000;}
+h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.02em;color:var(--green-deep);}
+section{padding:90px 0;}
+:focus-visible{outline:2px solid var(--purple-electric);outline-offset:3px;border-radius:3px;}
+
+/* ---------- 3. Utilities & typography ---------- */
+.wrap{max-width:var(--content-w);margin-inline:auto;padding-inline:28px;}
+.eyebrow{font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11.5px;font-weight:700;color:var(--gold);}
+.divider{width:50px;height:3px;border-radius:2px;margin-block:16px;background:linear-gradient(90deg,var(--purple-electric),var(--gold),var(--purple-neon));}
+.section-head{max-width:660px;margin-bottom:54px;}
+.section-head.center{margin-inline:auto;text-align:center;}
+.section-head h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12;}
+.section-head p{color:#504d44;font-size:15.5px;margin-top:14px;line-height:1.65;}
+.on-dark h2{color:#fff;}
+.on-dark p{color:rgba(247,242,231,.65);}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+/* scroll reveal (opacity+transform only — cheap to animate) */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ---------- 4. Buttons ---------- */
+.btn{
+  padding:13px 26px;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:.04em;
+  border:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease);
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-dark{background:linear-gradient(135deg,var(--green-deep),var(--green-mid));color:var(--sand);border:1px solid rgba(139,92,246,.4);}
+.btn-dark:hover{background:linear-gradient(135deg,var(--green-mid),#2D1B69);color:#fff;border-color:var(--purple-electric);box-shadow:0 8px 24px rgba(139,92,246,.35);}
+.btn-gold{background:var(--grad-gold-btn);color:#000;border:1px solid var(--gold-bright);font-weight:800;box-shadow:0 8px 24px rgba(255,215,0,.25);}
+.btn-gold:hover{box-shadow:0 12px 30px rgba(255,215,0,.4);}
+.btn-outline-gold{background:transparent;color:var(--gold-soft);border:1.5px solid var(--gold);}
+.btn-outline-gold:hover{background:var(--gold);color:#000;}
+.btn-block{width:100%;justify-content:center;}
+
+/* ---------- 5. Topbar & header ---------- */
+.topbar{background:var(--charcoal);color:rgba(247,242,231,.75);font-size:12.5px;padding:8px 0;border-bottom:1px solid rgba(255,215,0,.2);}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.topbar a.phone{color:var(--gold-bright);font-weight:700;letter-spacing:.02em;flex-shrink:0;}
+.topbar-ticker{overflow:hidden;white-space:nowrap;contain:layout paint;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+.topbar-ticker-inner{display:inline-flex;animation:marquee 24s linear infinite;}
+.topbar-ticker-inner span{padding-inline:24px;}
+.topbar-ticker-inner span::before{content:"★ ";color:var(--gold-bright);}
+
+header.main{
+  background:rgba(247,242,231,.95);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+  contain:layout paint style;
+  transition:box-shadow var(--dur-med) var(--ease),background var(--dur-med) var(--ease);
+}
+@supports (backdrop-filter:blur(1px)){
+  header.main{backdrop-filter:blur(14px);}
+}
+header.main.scrolled{background:rgba(247,242,231,.98);box-shadow:0 8px 24px -10px rgba(227,180,61,.4);}
+header.main .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px;}
+.brandmark{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--green-deep);}
+.brandmark .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--purple-electric),var(--purple-neon));box-shadow:0 0 10px var(--purple-electric);}
+nav.primary{display:flex;gap:4px;font-size:13.5px;font-weight:600;}
+nav.primary a{color:var(--green-mid);padding:8px 16px;border-radius:30px;border:1px solid transparent;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);}
+nav.primary a:hover,nav.primary a:focus-visible{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.4);color:var(--gold);}
+@media (max-width:880px){nav.primary{display:none;}}
+
+.header-actions{display:flex;align-items:center;gap:10px;}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:4.5px;width:38px;height:38px;background:transparent;border:1px solid rgba(139,92,246,.3);border-radius:8px;padding:0;flex-shrink:0;}
+.nav-toggle span{display:block;width:18px;height:2px;margin-inline:auto;background:var(--green-deep);border-radius:2px;transition:transform var(--dur-fast) var(--ease),opacity var(--dur-fast) var(--ease);}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+@media (max-width:880px){
+  .nav-toggle{display:flex;}
+  .header-actions .btn-dark{display:none;}
+}
+@media (max-width:420px){
+  .header-actions .btn-dark{display:none;}
+}
+
+.mobile-nav{display:flex;flex-direction:column;gap:2px;padding:10px 20px 18px;border-top:1px solid var(--line);background:rgba(247,242,231,.98);}
+.mobile-nav[hidden]{display:none;}
+.mobile-nav a{padding:13px 6px;font-size:15px;font-weight:600;color:var(--green-mid);border-bottom:1px solid rgba(227,180,61,.15);}
+.mobile-nav a:last-child{border-bottom:none;}
+@media (min-width:881px){.mobile-nav{display:none!important;}}
+
+/* ---------- 6. Hero ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:#0A0520;overflow:hidden;color:var(--ivory);contain:content;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg-img{
+  position:absolute;inset:0;background:center top/cover no-repeat;
+  filter:brightness(1.2) saturate(1.5) contrast(1.05);
+}
+.hero-bg-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(108deg,rgba(6,2,18,.5) 0%,rgba(8,3,26,.3) 30%,rgba(10,5,32,.08) 55%,rgba(4,1,12,.15) 100%),
+    linear-gradient(135deg,rgba(109,40,217,.18) 0%,rgba(139,92,246,.06) 40%,rgba(255,215,0,.04) 70%,rgba(109,40,217,.12) 100%);
+}
+/* static soft glow blobs — no infinite animation, just gentle presence */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.8;}
+.blob1{width:420px;height:420px;background:radial-gradient(circle,rgba(139,92,246,.16) 0%,transparent 70%);top:-120px;right:-60px;}
+.blob2{width:350px;height:350px;background:radial-gradient(circle,rgba(192,132,252,.12) 0%,transparent 70%);bottom:-130px;left:-50px;}
+
+.rupee-hero{
+  position:absolute;right:5%;top:20%;font-family:'Fraunces',serif;font-size:180px;line-height:1;
+  color:transparent;background:linear-gradient(135deg,rgba(255,215,0,.16),rgba(255,215,0,.04));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1px rgba(255,215,0,.2);
+  pointer-events:none;z-index:1;display:none;
+}
+@media (min-width:1100px){.rupee-hero{display:block;}}
+
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start;padding-block:50px 40px;width:100%;}
+@media (max-width:980px){.hero-inner{grid-template-columns:1fr;padding-block:40px 32px;}}
+
+.hero-left{
+  background:rgba(6,2,20,.42);border:1px solid rgba(139,92,246,.18);border-radius:var(--radius-lg);
+  padding:30px 32px 28px;
+}
+@supports (backdrop-filter:blur(1px)){.hero-left{backdrop-filter:blur(12px);}}
+
+.hero-tag{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,215,0,.5);background:rgba(255,215,0,.08);padding:8px 18px;border-radius:40px;margin-bottom:22px;}
+.hero-tag span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;}
+.hero-tag .live-dot{width:7px;height:7px;border-radius:50%;background:var(--purple-neon);box-shadow:0 0 8px var(--purple-neon);}
+
+.hero h1{font-size:clamp(36px,5.2vw,66px);line-height:1.04;color:#fff;margin-bottom:18px;}
+.hero h1 .line2{
+  display:block;color:transparent;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 35%,var(--purple-neon) 65%,#FFE88A 100%);
+  -webkit-background-clip:text;background-clip:text;
+}
+.hero p.lead{font-size:16.5px;line-height:1.7;color:rgba(247,242,231,.78);max-width:540px;margin-bottom:26px;}
+
+.hero-price-display{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.25);border-radius:8px;padding:12px 18px;margin-bottom:22px;}
+.hero-rupee{font-family:'Fraunces',serif;font-size:38px;color:var(--gold-bright);line-height:1;}
+.hero-price-text .label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(247,242,231,.55);}
+.hero-price-text .amount{font-family:'Fraunces',serif;font-size:26px;color:#fff;font-weight:700;}
+.hero-price-text .onwards{font-size:11px;color:var(--gold-soft);margin-left:4px;}
+.hero-unit-type{margin-left:12px;padding-left:12px;border-left:1px solid rgba(255,215,0,.25);}
+.hero-unit-type .lbl{font-size:10px;color:rgba(247,242,231,.5);text-transform:uppercase;letter-spacing:.1em;}
+.hero-unit-type .val{color:#fff;font-size:14px;font-weight:700;margin-top:2px;}
+
+/* countdown */
+.countdown-wrap{background:rgba(139,92,246,.08);border:1px solid rgba(192,132,252,.3);border-radius:var(--radius-md);padding:14px 20px;margin-bottom:24px;}
+.countdown-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(247,242,231,.5);margin-bottom:10px;}
+.countdown-digits{display:flex;gap:10px;align-items:center;}
+.cd-block{text-align:center;min-width:46px;}
+.cd-num{font-family:'Fraunces',serif;font-size:28px;color:var(--gold-bright);font-weight:700;line-height:1;display:block;}
+.cd-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(247,242,231,.45);margin-top:3px;display:block;}
+.cd-sep{font-family:'Fraunces',serif;font-size:24px;color:var(--gold);line-height:1;margin-bottom:12px;}
+
+.hero-stats{display:flex;gap:0;margin-bottom:32px;flex-wrap:wrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);}
+.hero-stat{padding:14px 22px;border-right:1px solid rgba(255,215,0,.2);text-align:center;}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .num{font-family:'Fraunces',serif;font-size:30px;color:var(--gold-bright);font-weight:700;line-height:1;}
+.hero-stat .lbl{font-size:11px;color:rgba(247,242,231,.55);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.trust-row{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;}
+.trust-badge{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(247,242,231,.6);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:7px 14px;border-radius:30px;}
+
+/* lead card */
+.hero-form-col{position:relative;z-index:3;}
+.badge-form-wrap{display:flex;flex-direction:column;gap:8px;padding:10px 10px 12px;border-radius:12px 12px 0 0;background:rgba(6,2,20,.28);border:1px solid rgba(139,92,246,.2);border-bottom:none;}
+.new-launch-badge{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;background:var(--grad-red);padding:10px 20px;border-radius:4px;}
+.new-launch-badge.alt{background:var(--grad-purple);}
+.new-launch-badge span{color:#fff;font-size:11.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;}
+
+.lead-card{
+  background:rgba(255,252,245,.95);border:1px solid rgba(255,215,0,.35);border-top:none;
+  border-radius:0 0 12px 12px;padding:36px 32px;position:relative;
+  box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,215,0,.2);
+}
+@supports (backdrop-filter:blur(1px)){.lead-card{backdrop-filter:blur(16px);}}
+.lead-card::before{
+  content:"✦ New Launch — First Phase";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--grad-gold);color:#000;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 18px;border-radius:30px;white-space:nowrap;box-shadow:0 4px 14px rgba(255,215,0,.4);
+}
+.lead-card h3{font-size:22px;margin-bottom:4px;background:linear-gradient(90deg,var(--green-deep),#2D1B69);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lead-card .price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--gold);margin-bottom:22px;font-weight:600;}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-field{display:flex;flex-direction:column;gap:5px;}
+.form-field label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b6453;}
+.form-field input,.form-field select{border:1.5px solid #D8CDA9;background:#fff;padding:11px 13px;font-size:13.5px;border-radius:var(--radius-sm);color:var(--charcoal);width:100%;transition:border-color var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--gold-bright);box-shadow:0 0 0 3px rgba(255,215,0,.18);}
+.form-field.full{grid-column:1/-1;}
+.form-submit{
+  width:100%;margin-top:10px;padding:16px;border:none;border-radius:var(--radius-sm);
+  background:var(--grad-red);color:#fff;font-size:14.5px;font-weight:800;letter-spacing:.05em;
+  transition:filter var(--dur-fast) var(--ease),transform var(--dur-fast) var(--ease);
+}
+.form-submit:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.card-trust{font-size:11.5px;color:#8b826b;margin-top:14px;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;}
+
+/* ---------- 7. Marquee & notice bar ---------- */
+.marquee-wrap{background:var(--charcoal);overflow:hidden;padding:15px 0;border-block:1px solid rgba(255,215,0,.2);contain:layout paint;}
+.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-track span{color:var(--gold-soft);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding-inline:40px;white-space:nowrap;display:flex;align-items:center;gap:12px;}
+.marquee-track span::before{content:"✦";color:var(--gold-bright);}
+
+.notice-bar{background:var(--grad-red);padding:11px 0;text-align:center;font-size:12.5px;font-weight:800;letter-spacing:.1em;color:#fff;text-transform:uppercase;}
+
+/* ---------- 8. Scarcity bar ---------- */
+#scarcityBar{background:linear-gradient(90deg,#0A0520,#1A0A52,#0A0520);padding:16px 0;border-block:1px solid rgba(139,92,246,.2);}
+.scarcity-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center;}
+.sc-item{display:flex;align-items:center;gap:10px;}
+.sc-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--gold-bright);line-height:1;}
+.sc-label{font-size:11px;color:rgba(247,242,231,.55);text-transform:uppercase;letter-spacing:.1em;line-height:1.4;text-align:left;}
+.sc-divider{width:1px;height:36px;background:rgba(139,92,246,.3);}
+.units-bar{width:200px;height:8px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin-top:6px;}
+.units-fill{height:100%;width:73%;background:linear-gradient(90deg,var(--red-bright),#FF6B35);border-radius:10px;}
+
+/* ---------- 9. Sections ---------- */
+.about,.floors,.amenities,.faq,.showcase{background:var(--ivory);}
+.pricing,.location,.final-cta{color:var(--ivory);}
+.pricing,#roiSection,#siteVisitSection{background:var(--grad-dark);}
+.location{background:linear-gradient(160deg,#0A0520 0%,#1A0A52 100%);}
+.final-cta{background:var(--grad-dark);}
+.pricing,.final-cta,#roiSection{position:relative;overflow:hidden;}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr;}}
+.about-img-wrap{position:relative;border-radius:8px;overflow:hidden;height:480px;box-shadow:inset 0 0 0 2px rgba(139,92,246,.4),0 0 40px rgba(139,92,246,.15);}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(1.08) saturate(1.25);}
+.about-badge{position:absolute;bottom:20px;left:20px;background:rgba(13,6,40,.9);border:1px solid rgba(139,92,246,.5);padding:14px 18px;border-radius:8px;}
+@supports (backdrop-filter:blur(1px)){.about-badge{backdrop-filter:blur(10px);}}
+.about-badge .num{font-family:'Fraunces',serif;font-size:28px;color:var(--gold-bright);font-weight:700;line-height:1;}
+.about-badge .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(247,242,231,.65);margin-top:4px;}
+.about-content p{color:#3f3c33;line-height:1.8;font-size:15.5px;margin-bottom:18px;}
+.figure-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px;}
+.figure-strip div{border-top:2px solid var(--gold);padding-top:14px;}
+.figure-strip .num{font-family:'Fraunces',serif;font-size:26px;color:var(--green-deep);font-weight:700;}
+.figure-strip .cap{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#7a755f;margin-top:5px;}
+.signature-svg{margin-top:22px;overflow:visible;}
+.signature-svg path{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 1.6s ease;}
+.signature-svg.in path{stroke-dashoffset:0;}
+
+/* pricing */
+.pricing::before{content:"";position:absolute;inset:0;background:var(--pricing-bg,none) center/cover no-repeat;opacity:.16;mix-blend-mode:luminosity;}
+table.price-table{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;}
+table.price-table thead{background:rgba(139,92,246,.12);}
+table.price-table th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-soft);padding:18px 24px;font-weight:700;border-bottom:1px solid rgba(255,215,0,.2);}
+table.price-table td{padding:20px 24px;border-bottom:1px solid rgba(255,215,0,.08);font-size:15px;background:rgba(255,255,255,.02);}
+table.price-table tr:hover td{background:rgba(139,92,246,.08);}
+.status-available{color:#2FE6A0;font-weight:700;}
+.status-selling{color:var(--gold-bright);font-weight:700;}
+.tag-request{background:transparent;border:1.5px solid var(--gold);color:var(--gold-soft);padding:7px 18px;border-radius:30px;font-size:12.5px;font-weight:700;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease);}
+.tag-request:hover{background:var(--gold-bright);color:#000;}
+.price-note{margin-top:22px;font-size:12.5px;color:rgba(247,242,231,.45);}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
+.table-scroll table{min-width:560px;}
+
+/* why invest */
+.why{background:var(--grad-dark);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(139,92,246,.2);border-radius:10px;overflow:hidden;border:1.5px solid rgba(139,92,246,.3);}
+@media (max-width:880px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.why-grid{grid-template-columns:1fr;}}
+.why-item{background:rgba(13,6,40,.95);padding:36px 30px;transition:background var(--dur-med) var(--ease);}
+.why-item:hover{background:rgba(26,10,82,.98);}
+.why-item .ico{font-family:'Fraunces',serif;font-size:36px;color:var(--gold-bright);margin-bottom:12px;line-height:1;}
+.why-item h4{color:#fff;font-size:16px;margin-bottom:8px;}
+.why-item p{font-size:14px;color:rgba(247,242,231,.65);line-height:1.6;}
+
+/* floor plans */
+.floor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+@media (max-width:880px){.floor-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.floor-grid{grid-template-columns:1fr;}}
+.floor-card{background:#fff;border:1px solid var(--line);overflow:hidden;border-radius:8px;transition:transform var(--dur-med) var(--ease),box-shadow var(--dur-med) var(--ease);}
+.floor-card:hover{transform:translateY(-6px);box-shadow:0 0 0 2px var(--purple-neon),0 20px 40px -12px rgba(139,92,246,.35);}
+.floor-card .imgwrap{aspect-ratio:4/3;overflow:hidden;background:#e9e1c8;}
+.floor-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.floor-card:hover img{transform:scale(1.06);}
+.floor-card .cap{padding:16px 18px;font-size:14px;font-weight:700;color:var(--green-deep);display:flex;justify-content:space-between;align-items:center;}
+.floor-card .cap span.view{font-size:11px;color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.06em;}
+
+/* showcase & gallery */
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media (max-width:880px){.showcase-grid{grid-template-columns:1fr;}}
+.showcase-card{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:10px;transition:box-shadow var(--dur-med) var(--ease);}
+.showcase-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.showcase-card:hover img{transform:scale(1.06);}
+.showcase-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,6,40,.92) 0%,rgba(26,10,82,.15) 55%,transparent 100%);}
+.showcase-card:hover{box-shadow:0 0 0 2px var(--gold-bright);}
+.showcase-card .label{position:absolute;bottom:24px;left:24px;z-index:2;color:#fff;}
+.showcase-card .label .eyebrow{color:var(--gold-soft);}
+.showcase-card .label h3{color:#fff;font-size:22px;margin-top:6px;}
+
+.gallery-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;}
+@media (max-width:880px){.gallery-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+.gallery-item{position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line);aspect-ratio:4/5;transition:box-shadow var(--dur-med) var(--ease);}
+.gallery-item.g1{aspect-ratio:auto;grid-row:span 2;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-item:hover{box-shadow:0 0 0 2px var(--gold-bright);}
+.gallery-item .gtag{position:absolute;bottom:14px;left:14px;z-index:2;color:#fff;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;background:rgba(7,28,18,.7);padding:6px 12px;border:1px solid rgba(255,215,0,.5);border-radius:4px;}
+
+/* location */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media (max-width:880px){.loc-grid{grid-template-columns:1fr;}}
+ul.loc-list{list-style:none;margin-top:22px;}
+ul.loc-list li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(139,92,246,.18);font-size:15px;color:rgba(247,242,231,.85);align-items:center;}
+ul.loc-list li .mk{color:var(--purple-neon);font-weight:800;font-size:16px;}
+.map-frame{border-radius:10px;overflow:hidden;border:1.5px solid rgba(139,92,246,.4);}
+.map-frame img{width:100%;display:block;}
+
+/* amenities */
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--line);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;}
+@media (max-width:880px){.am-grid{grid-template-columns:repeat(2,1fr);}}
+.am-item{background:#fff;padding:38px 22px;text-align:center;transition:background var(--dur-med) var(--ease);}
+.am-item:hover{background:linear-gradient(135deg,rgba(255,215,0,.06),rgba(139,92,246,.05));}
+.am-item img{width:40px;height:40px;margin:0 auto 16px;filter:sepia(40%) saturate(320%) hue-rotate(235deg) brightness(.85);}
+.am-item p{font-size:13.5px;font-weight:700;color:var(--green-deep);}
+
+/* developer */
+.developer{background:var(--sand);}
+.dev-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
+@media (max-width:880px){.dev-grid{grid-template-columns:1fr;}}
+.dev-grid p{color:#3f3c33;line-height:1.8;font-size:15.5px;margin-bottom:16px;}
+.dev-badge{border:1px solid rgba(255,215,0,.4);padding:36px;background:var(--ivory);border-radius:10px;box-shadow:0 10px 30px -10px rgba(255,215,0,.2);text-align:center;}
+.dev-badge .num{font-family:'Fraunces',serif;font-size:52px;color:var(--green-deep);font-weight:800;line-height:1;}
+.dev-badge .lbl{font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:#7a755f;margin-top:8px;}
+
+/* ROI calculator */
+#roiSection{padding-block:90px;}
+.roi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+@media (max-width:880px){.roi-wrap{grid-template-columns:1fr;gap:32px;}}
+.roi-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.roi-label span{font-size:13px;color:rgba(247,242,231,.6);}
+.roi-label strong{font-size:13px;color:var(--gold-bright);font-family:'Fraunces',serif;}
+.roi-slider{width:100%;height:6px;background:rgba(255,255,255,.1);border-radius:10px;appearance:none;outline:none;margin-bottom:22px;accent-color:var(--purple-electric);}
+.roi-slider::-webkit-slider-thumb{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--purple-electric),var(--gold));border:2px solid #fff;appearance:none;cursor:pointer;}
+.roi-result{background:rgba(255,255,255,.04);border:1px solid rgba(139,92,246,.3);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}
+.roi-res-item{text-align:center;padding:14px 10px;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.15);}
+.roi-res-item .val{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);font-weight:700;}
+.roi-res-item .key{font-size:11px;color:rgba(247,242,231,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+.roi-chart{position:relative;height:180px;display:flex;align-items:flex-end;gap:8px;padding-inline:4px;}
+.roi-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.roi-bar{width:100%;border-radius:6px 6px 0 0;transition:height .6s var(--ease-pop);}
+.roi-bar-lbl{font-size:10px;color:rgba(247,242,231,.5);text-align:center;}
+.roi-bar-val{font-size:11px;font-weight:700;color:var(--gold-bright);text-align:center;}
+.roi-summary{margin-top:18px;padding:16px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);border-radius:10px;text-align:center;}
+.roi-summary .lbl{font-size:11px;color:rgba(247,242,231,.5);text-transform:uppercase;letter-spacing:.1em;}
+.roi-summary .val{font-family:'Fraunces',serif;font-size:34px;color:var(--gold-bright);font-weight:700;}
+.roi-summary .sub{font-size:12px;color:rgba(247,242,231,.45);}
+.sec-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple-neon);margin-bottom:10px;}
+.sec-h{font-size:clamp(26px,3.2vw,36px);}
+
+/* site visit booking */
+#siteVisitSection{padding-block:90px;}
+.sv-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media (max-width:880px){.sv-wrap{grid-template-columns:1fr;gap:32px;}}
+.sv-perk{display:flex;align-items:center;gap:14px;padding:16px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:10px;margin-bottom:14px;}
+.sv-perk.highlight{background:rgba(255,215,0,.06);border-color:rgba(255,215,0,.2);}
+.sv-perk .ico{font-size:24px;}
+.sv-perk strong{color:#fff;display:block;}
+.sv-perk.highlight strong{color:var(--gold-bright);}
+.sv-perk span{font-size:13px;color:rgba(247,242,231,.5);}
+.sv-card{background:rgba(255,255,255,.97);border-radius:16px;padding:32px 30px;box-shadow:var(--shadow-lg),0 0 40px rgba(139,92,246,.15);}
+.sv-card h3{font-family:'Fraunces',serif;font-size:22px;color:var(--green-mid);margin-bottom:4px;}
+.sv-card .sub{font-size:13px;color:#8b826b;margin-bottom:22px;}
+.sv-card .field-label{font-size:12px;color:#8b826b;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+.sv-card .field-label .live-note{text-transform:none;letter-spacing:0;color:#a89f80;font-weight:500;}
+.date-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;}
+.more-dates-btn{display:block;margin:0 0 18px;background:none;border:none;color:var(--purple-electric);font-size:12.5px;font-weight:700;padding:4px 0;text-decoration:underline;text-underline-offset:3px;}
+.more-dates-btn:hover{color:var(--purple-bright);}
+.more-dates-btn:disabled{color:#b8b2a0;text-decoration:none;cursor:default;}
+.date-btn{border:1.5px solid rgba(139,92,246,.25);border-radius:10px;padding:10px 4px;text-align:center;cursor:pointer;background:#fff;transition:background var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);}
+.date-btn:hover{border-color:var(--purple-electric);background:rgba(139,92,246,.06);}
+.date-btn.active{background:var(--grad-purple);border-color:transparent;}
+.date-btn .day{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#8b826b;display:block;}
+.date-btn .num{font-size:20px;font-weight:800;color:var(--green-mid);font-family:'Fraunces',serif;display:block;}
+.date-btn.active .day,.date-btn.active .num{color:#fff;}
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+.time-btn{border:1.5px solid rgba(139,92,246,.2);border-radius:8px;padding:9px 6px;font-size:12.5px;font-weight:700;color:var(--green-mid);cursor:pointer;background:#fff;text-align:center;transition:border-color var(--dur-fast) var(--ease);}
+.time-btn:hover{border-color:var(--purple-electric);}
+.time-btn.active{background:var(--grad-red);border-color:transparent;color:#fff;}
+.time-btn.disabled{background:#f5f3f0;color:#ccc;cursor:not-allowed;}
+.sv-input{width:100%;border:1.5px solid rgba(139,92,246,.2);border-radius:8px;padding:11px 14px;font-size:13.5px;background:#fff;color:var(--green-mid);margin-bottom:10px;outline:none;transition:border-color var(--dur-fast) var(--ease);}
+.sv-input:focus{border-color:var(--purple-electric);box-shadow:0 0 0 3px rgba(139,92,246,.12);}
+.sv-submit{width:100%;background:var(--grad-red);color:#fff;border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:8px;transition:filter var(--dur-fast) var(--ease);}
+.sv-submit:hover{filter:brightness(1.08);}
+.sv-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.sv-badge{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.22);border-radius:20px;padding:5px 12px;font-size:11.5px;color:var(--green-mid);font-weight:600;}
+
+/* final CTA */
+.final-cta{text-align:center;padding-block:100px;}
+.final-cta::before{content:"";position:absolute;inset:0;background:var(--final-cta-bg,none) center/cover no-repeat;opacity:.06;}
+.final-cta .inner{position:relative;z-index:2;max-width:660px;margin-inline:auto;}
+.final-cta h2{color:#fff;font-size:clamp(28px,3.6vw,42px);margin-bottom:16px;}
+.final-cta p{color:rgba(247,242,231,.72);margin-bottom:36px;font-size:16px;}
+.final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* FAQ */
+.faq-grid{max-width:800px;margin-inline:auto;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-item summary{list-style:none;padding:22px 0;font-weight:700;font-size:15.5px;color:var(--green-deep);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";font-size:24px;color:var(--gold-bright);font-weight:400;flex-shrink:0;}
+.faq-item[open] summary::after{content:"–";}
+.faq-item .a{padding:0 0 22px;color:#504d44;font-size:14.5px;line-height:1.7;}
+
+/* ---------- 10. Footer ---------- */
+footer{background:linear-gradient(160deg,#080318 0%,#0D0628 100%);color:rgba(247,242,231,.6);padding:70px 0 30px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+@media (max-width:780px){.foot-grid{grid-template-columns:1fr;}}
+footer h4{color:var(--gold-soft);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;}
+footer .brandmark{color:#fff;}
+footer .brandmark .dot{background:var(--gold-bright);box-shadow:none;}
+footer p.about-foot{font-size:13.5px;line-height:1.75;margin-top:16px;max-width:340px;}
+footer ul{list-style:none;}
+footer ul li{margin-bottom:12px;font-size:13.5px;}
+footer ul li a:hover,footer ul li a:focus-visible{color:var(--gold-soft);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.disclaimer{font-size:11px;color:rgba(247,242,231,.3);max-width:900px;margin-top:18px;line-height:1.65;}
+
+/* ---------- 11. Floating buttons & mobile sticky CTA ---------- */
+.float-btns{position:fixed;right:20px;bottom:30px;z-index:80;display:flex;flex-direction:column;gap:14px;contain:layout paint;}
+.float-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);position:relative;}
+.float-btn:hover{transform:scale(1.1);}
+.float-btn svg{width:26px;height:26px;}
+.float-wa{background:linear-gradient(135deg,#25D366,#128C7E);}
+.float-call{background:linear-gradient(135deg,var(--gold),var(--gold-bright));}
+.float-btn .tooltip{position:absolute;right:66px;top:50%;transform:translateY(-50%);background:var(--charcoal);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity var(--dur-fast) var(--ease);}
+.float-btn:hover .tooltip,.float-btn:focus-visible .tooltip{opacity:1;}
+@media (max-width:780px){.float-btns{display:none;}}
+
+.mobile-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:rgba(8,4,22,.97);border-top:1px solid rgba(139,92,246,.3);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));grid-template-columns:1fr 1fr 1.2fr;gap:8px;box-shadow:0 -8px 24px rgba(0,0,0,.35);contain:layout paint;}
+@media (max-width:780px){
+  .mobile-sticky{display:grid;}
+  footer{padding-bottom:calc(30px + 64px + env(safe-area-inset-bottom,0px));}
+}
+.mob-btn{border:none;border-radius:10px;padding:11px 6px;font-size:12px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px;letter-spacing:.03em;}
+.mob-btn span{font-size:17px;line-height:1;}
+.mob-call{background:linear-gradient(135deg,var(--green-mid),#2D1B69);color:var(--gold-bright);border:1px solid rgba(139,92,246,.4);}
+.mob-wa{background:linear-gradient(135deg,#064E2E,#0A7A46);color:#fff;}
+.mob-visit{background:var(--grad-red);color:#fff;}
+
+/* ---------- 12. Modals & popups ---------- */
+.modal-bg,.faq-popup-bg,#exitPopup{
+  position:fixed;inset:0;background:rgba(7,10,28,.82);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity var(--dur-med) var(--ease);
+}
+@supports (backdrop-filter:blur(1px)){.modal-bg,.faq-popup-bg,#exitPopup{backdrop-filter:blur(6px);}}
+.modal-bg.show,.faq-popup-bg.show,#exitPopup.show{opacity:1;pointer-events:auto;}
+.modal,.faq-popup{
+  background:linear-gradient(160deg,var(--ivory) 0%,var(--sand) 100%);max-width:480px;width:100%;
+  padding:40px 34px;position:relative;border-radius:12px;box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,215,0,.25);
+  transform:scale(.94) translateY(14px);transition:transform var(--dur-med) var(--ease-pop);
+}
+.modal-bg.show .modal,.faq-popup-bg.show .faq-popup{transform:none;}
+.modal .close,.faq-popup .close{position:absolute;top:16px;right:18px;font-size:22px;color:#7a755f;background:none;border:none;font-weight:300;line-height:1;}
+.modal .close:hover,.faq-popup .close:hover{color:var(--charcoal);}
+.modal h3,.faq-popup h3{font-size:24px;margin-bottom:6px;}
+.modal p.sub,.faq-popup p.sub{font-size:13.5px;color:#6b6453;margin-bottom:24px;}
+.faq-popup{max-width:500px;text-align:center;}
+.popup-badge{display:inline-block;background:var(--grad-gold);color:#000;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:30px;margin-bottom:18px;}
+
+#exitPopup .exit-card{
+  background:linear-gradient(135deg,var(--green-deep),var(--green-mid));border:1px solid rgba(255,215,0,.4);
+  border-radius:20px;max-width:480px;width:92%;box-shadow:var(--shadow-lg),0 0 40px rgba(139,92,246,.25);
+  overflow:hidden;transform:scale(.94) translateY(14px);transition:transform var(--dur-med) var(--ease-pop);position:relative;
+}
+#exitPopup.show .exit-card{transform:none;}
+.exit-top{background:var(--grad-red);padding:14px 20px;}
+.exit-top span{color:#fff;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;}
+.exit-body{padding:28px 28px 24px;}
+.exit-body h2{font-family:'Fraunces',serif;font-size:26px;color:var(--gold-bright);margin-bottom:6px;}
+.exit-body p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:20px;line-height:1.6;}
+.exit-offer{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.25);border-radius:10px;padding:14px 16px;margin-bottom:20px;display:flex;gap:14px;align-items:center;}
+.exit-offer .ico{font-size:28px;}
+.exit-offer strong{display:block;color:var(--gold-bright);font-size:14px;}
+.exit-offer span{color:rgba(255,255,255,.55);font-size:12px;}
+.exit-actions{display:flex;flex-direction:column;gap:10px;}
+.exit-wa{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:8px;transition:filter var(--dur-fast) var(--ease);}
+.exit-wa:hover{filter:brightness(1.1);}
+.exit-close{background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);border-radius:10px;padding:11px;font-size:12.5px;}
+.exit-close:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.3);}
+.exit-x{position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,.6);font-size:20px;line-height:1;z-index:1;}
+
+/* ---------- 13. Live activity feed ---------- */
+#activityFeed{position:fixed;bottom:100px;left:20px;z-index:90;display:flex;flex-direction:column;gap:8px;pointer-events:none;contain:layout paint;}
+@media (max-width:780px){#activityFeed{bottom:80px;}}
+.activity-pill{
+  display:flex;align-items:center;gap:10px;background:rgba(10,6,30,.9);border:1px solid rgba(139,92,246,.35);
+  border-radius:40px;padding:9px 14px 9px 10px;box-shadow:0 8px 20px rgba(0,0,0,.35);max-width:280px;
+  transform:translateX(-120%);opacity:0;transition:transform .5s var(--ease-pop),opacity .4s ease;
+}
+.activity-pill.show{transform:translateX(0);opacity:1;}
+.activity-pill .av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--grad-purple);}
+.activity-pill .txt{line-height:1.3;}
+.activity-pill .txt strong{display:block;font-size:12.5px;color:#fff;font-weight:700;}
+.activity-pill .txt span{font-size:11px;color:rgba(255,255,255,.55);}
+.activity-pill .dot-live{width:7px;height:7px;border-radius:50%;background:#4ADE80;flex-shrink:0;}
+
+/* ---------- 14. Animations (transform/opacity only) ---------- */
+@keyframes marquee{to{transform:translate3d(-50%,0,0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* one-time hero entrance, staggered, GPU-friendly */
+.hero-tag,.hero h1,.hero p.lead,.hero-price-display,.countdown-wrap,.hero-stats,.hero-ctas,.trust-row{
+  animation:fadeInUp .7s var(--ease) both;
+}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero-tag{animation-delay:.05s;}
+.hero h1{animation-delay:.12s;}
+.hero p.lead{animation-delay:.2s;}
+.hero-price-display{animation-delay:.28s;}
+.countdown-wrap{animation-delay:.34s;}
+.hero-stats{animation-delay:.4s;}
+.hero-ctas{animation-delay:.46s;}
+.trust-row{animation-delay:.52s;}
+.lead-card{animation:fadeInUp .7s .3s var(--ease) both;}
+
+/* ---------- 16. Mobile pass (≤768px = phones/small tablets) ---------- */
+@media (max-width:768px){
+  section{padding:56px 0;}
+  .wrap{padding-inline:20px;}
+  .section-head{margin-bottom:36px;}
+  .section-head h2{font-size:clamp(26px,7vw,34px);}
+
+  /* header */
+  header.main .wrap{padding-block:12px;}
+  .brandmark{font-size:17px;}
+
+  /* hero */
+  .hero{min-height:auto;padding-block:20px 0;}
+  .hero-inner{padding-block:24px 24px;gap:24px;}
+  .hero-left{padding:22px 18px 20px;}
+  .hero h1{font-size:clamp(28px,8vw,40px);}
+  .hero p.lead{font-size:15px;}
+  .hero-tag span{font-size:11px;}
+  .hero-price-display{flex-wrap:wrap;padding:10px 14px;}
+  .hero-unit-type{margin-left:0;padding-left:0;border-left:none;margin-top:8px;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .hero-stat{border-right:1px solid rgba(255,215,0,.2);border-bottom:1px solid rgba(255,215,0,.2);padding:12px 10px;}
+  .hero-stat:nth-child(2n){border-right:none;}
+  .hero-stat:nth-last-child(-n+2){border-bottom:none;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{justify-content:center;}
+  .lead-card{padding:26px 20px;}
+  .lead-card::before{font-size:10px;padding:5px 12px;}
+  .form-row{grid-template-columns:1fr;}
+
+  /* about / grids that go 1-col earlier on real phones */
+  .about-img-wrap{height:300px;}
+  .figure-strip{gap:12px;}
+  .am-grid{grid-template-columns:1fr 1fr;}
+  .why-item,.am-item{padding:26px 18px;}
+
+  /* roi + site visit */
+  .date-grid{grid-template-columns:repeat(3,1fr);}
+  .time-grid{grid-template-columns:repeat(2,1fr);}
+  .sv-card{padding:24px 18px;}
+  .roi-result{grid-template-columns:1fr 1fr;}
+  .roi-chart{height:150px;}
+
+  /* final cta */
+  .final-ctas{flex-direction:column;align-items:stretch;}
+  .final-ctas .btn{justify-content:center;}
+
+  /* modals — tighter padding, edge-to-edge on very small screens */
+  .modal,.faq-popup{padding:28px 20px;border-radius:14px;}
+  .exit-body{padding:22px 18px 20px;}
+
+  /* leave clearance above the sticky CTA bar for the last section + toasts */
+  main{padding-bottom:8px;}
+  #activityFeed{bottom:96px;max-width:calc(100vw - 40px);}
+  .activity-pill{max-width:calc(100vw - 40px);}
+}
+
+@media (max-width:480px){
+  .countdown-digits{gap:6px;}
+  .cd-block{min-width:38px;}
+  .cd-num{font-size:22px;}
+  .hero-rupee{font-size:30px;}
+  .hero-price-text .amount{font-size:22px;}
+  .new-launch-badge{padding:9px 12px;}
+  .new-launch-badge span{font-size:10px;letter-spacing:.06em;}
+  .trust-row{gap:8px;}
+  .trust-badge{font-size:11px;padding:6px 10px;}
+  .date-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .date-btn{padding:8px 2px;}
+  .date-btn .num{font-size:16px;}
+  .time-grid{grid-template-columns:repeat(2,1fr);gap:6px;}
+  .am-grid{grid-template-columns:1fr 1fr;}
+  .mob-btn{font-size:11px;padding:10px 4px;}
+  .mob-btn span{font-size:15px;}
+}
+
+@media (max-width:360px){
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hero-stat .num{font-size:22px;}
+  .date-grid{grid-template-columns:repeat(2,1fr);}
+  .time-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+</style>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": "SVG Golf Avenue",
+  "description": "A 3 lakh sq.ft. business and entertainment landmark in Site-C, Greater Noida featuring retail shops, a 5-screen multiplex, food court and studio apartments.",
+  "url": "https://svggolfavenue.com/",
+  "image": "https://svggolfavenue.com/images/svg-golf-avenue.jpeg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plot No. Commercial Site-C(H), Industrial Area, Surajpur",
+    "addressLocality": "Greater Noida",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  },
+  "telephone": "+91-6398921556",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "price": "4000000",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="sr-only" href="#main-content">Skip to main content</a>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-ticker" aria-hidden="true">
+      <div class="topbar-ticker-inner">
+        <span>New Launch — Site-C, Greater Noida</span>
+        <span>Starting ₹40 Lac* Onwards</span>
+        <span>5-Screen PVR Multiplex</span>
+        <span>1000 Car Parking</span>
+        <span>RERA Registered</span>
+        <span>Studio Apartments Available</span>
+        <span>New Launch — Site-C, Greater Noida</span>
+        <span>Starting ₹40 Lac* Onwards</span>
+        <span>5-Screen PVR Multiplex</span>
+        <span>1000 Car Parking</span>
+        <span>RERA Registered</span>
+        <span>Studio Apartments Available</span>
+      </div>
+    </div>
+    <a class="phone" href="tel:+916398921556">📞 +91-63989 21556</a>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="main">
+  <div class="wrap">
+    <a class="brandmark" href="#overview"><span class="dot" aria-hidden="true"></span> SVG Golf Avenue</a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#pricing">Price List</a>
+      <a href="#floor-plans">Floor Plans</a>
+      <a href="#location">Location</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-dark" data-open="modalBg">Enquire Now</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile" hidden>
+    <a href="#overview">Overview</a>
+    <a href="#pricing">Price List</a>
+    <a href="#floor-plans">Floor Plans</a>
+    <a href="#location">Location</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-gold btn-block" data-open="modalBg" style="margin-top:6px;">Enquire Now</a>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="overview" aria-label="Introduction">
+  <div class="hero-bg">
+    <div class="hero-bg-img" style="background-image:url('https://svggolfavenue.com/images/svg-golf-avenue.jpeg')"></div>
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="blob blob1" aria-hidden="true"></div>
+  <div class="blob blob2" aria-hidden="true"></div>
+  <div class="rupee-hero" aria-hidden="true">₹</div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>Site-C, Greater Noida · First Phase Open</span>
+      </div>
+
+      <h1>Where Greater Noida<br>Comes to <span class="line2">Invest &amp; Thrive</span></h1>
+      <p class="lead">SVG Golf Avenue — 3 lakh sq. ft. of retail, dining, entertainment &amp; studio apartments. Greater Noida's next landmark commercial destination.</p>
+
+      <div class="hero-price-display">
+        <span class="hero-rupee" aria-hidden="true">₹</span>
+        <div class="hero-price-text">
+          <div class="label">Starting Price</div>
+          <div class="amount">40 Lac<span class="onwards">* Onwards</span></div>
+        </div>
+        <div class="hero-unit-type">
+          <div class="lbl">Unit Type</div>
+          <div class="val">Retail &amp; Studio</div>
+        </div>
+      </div>
+
+      <div class="countdown-wrap">
+        <div class="countdown-label">⏱ Pre-Launch Offer Ends In</div>
+        <div class="countdown-digits">
+          <div class="cd-block"><span class="cd-num" id="cd-days">00</span><span class="cd-lbl">Days</span></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-hours">00</span><span class="cd-lbl">Hours</span></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-mins">00</span><span class="cd-lbl">Mins</span></div>
+          <div class="cd-sep" aria-hidden="true">:</div>
+          <div class="cd-block"><span class="cd-num" id="cd-secs">00</span><span class="cd-lbl">Secs</span></div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num" data-count="3" data-suffix="L+">0</div><div class="lbl">Sq.Ft.</div></div>
+        <div class="hero-stat"><div class="num" data-count="5" data-suffix="">0</div><div class="lbl">Cinema Screens</div></div>
+        <div class="hero-stat"><div class="num" data-count="1000" data-suffix="">0</div><div class="lbl">Car Parking</div></div>
+        <div class="hero-stat"><div class="num" data-count="40" data-prefix="₹" data-suffix="L*">₹0</div><div class="lbl">Starting Price</div></div>
+      </div>
+
+      <div class="hero-ctas">
+        <button class="btn btn-gold" data-open="modalBg">⚡ Download Price List</button>
+        <a class="btn btn-outline-gold" href="tel:+916398921556">📞 Speak to Advisor</a>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-badge">🏆 RERA Registered</div>
+        <div class="trust-badge">🔒 100% Secure Investment</div>
+        <div class="trust-badge">⚡ Limited Inventory</div>
+      </div>
+    </div>
+
+    <div class="hero-form-col">
+      <div class="badge-form-wrap">
+        <div class="new-launch-badge"><span>🔥 New Launch Project</span></div>
+        <div class="new-launch-badge alt"><span>🏢 Retail Shops &amp; Studio Apartments</span></div>
+      </div>
+
+      <div class="lead-card">
+        <h3>Book a Free Site Visit</h3>
+        <div class="price">Retail &amp; Studio Apartments — Starting ₹40 Lac*</div>
+        <form id="heroForm" data-wa-form aria-label="Book a free site visit">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="hero-name">Full Name *</label>
+              <input id="hero-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="hero-phone">Mobile No. *</label>
+              <input id="hero-phone" type="tel" name="phone" placeholder="10-digit number" required pattern="[0-9]{10}" autocomplete="tel">
+            </div>
+            <div class="form-field">
+              <label for="hero-email">Email</label>
+              <input id="hero-email" type="email" name="email" placeholder="Your email" autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label for="hero-interest">Interested In</label>
+              <select id="hero-interest" name="interest">
+                <option value="">Select Unit Type</option>
+                <option>Retail Shop</option>
+                <option>Studio Apartment</option>
+                <option>Food Court Unit</option>
+                <option>Any Available</option>
+              </select>
+            </div>
+            <div class="form-field full">
+              <label for="hero-budget">Budget Range</label>
+              <select id="hero-budget" name="budget">
+                <option value="">Select Budget</option>
+                <option>₹40L – ₹60L</option>
+                <option>₹60L – ₹1Cr</option>
+                <option>₹1Cr – ₹2Cr</option>
+                <option>Above ₹2Cr</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="form-submit"><span>🚀 Get Best Price on WhatsApp</span></button>
+        </form>
+        <div class="card-trust">🔒 No spam · Advisor replies in 15 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOTICE BAR ===== -->
+<p class="notice-bar">🔥 Limited Units Available in First Phase — Prices Increase After Each Phase · Call Now: +91-63989 21556 🔥</p>
+
+<!-- ===== SCARCITY BAR ===== -->
+<div id="scarcityBar">
+  <div class="wrap scarcity-inner">
+    <div class="sc-item">
+      <div>
+        <div class="sc-num" id="unitsLeft">6</div>
+        <div class="sc-label">Units Left<br>at Launch Price</div>
+      </div>
+    </div>
+    <div class="sc-divider" aria-hidden="true"></div>
+    <div class="sc-item">
+      <div>
+        <div style="font-size:11px;color:rgba(247,242,231,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;">Inventory Sold</div>
+        <div class="units-bar" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" aria-label="Inventory sold"><div class="units-fill"></div></div>
+        <div style="font-size:11px;color:rgba(247,242,231,.4);margin-top:5px;">73% sold — 27% remaining</div>
+      </div>
+    </div>
+    <div class="sc-divider" aria-hidden="true"></div>
+    <div class="sc-item">
+      <div>
+        <div class="sc-num">12</div>
+        <div class="sc-label">Site Visits<br>This Week</div>
+      </div>
+    </div>
+    <div class="sc-divider" aria-hidden="true"></div>
+    <div class="sc-item">
+      <a class="btn btn-gold" href="#siteVisitSection" style="padding:10px 20px;font-size:13px;">📅 Book Site Visit</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-wrap">
+  <div class="marquee-track" aria-hidden="true">
+    <span>5-Screen PVR Multiplex</span><span>5-Star Hotel</span><span>1000 Car Parking</span><span>3 Lakh Sq.Ft. Development</span><span>Studio Apartments</span><span>Premium Food Court</span><span>Double-Height Entertainment Zone</span><span>20,000 Sq.Ft. Supermarket</span><span>Greater Noida's Finest</span>
+    <span>5-Screen PVR Multiplex</span><span>5-Star Hotel</span><span>1000 Car Parking</span><span>3 Lakh Sq.Ft. Development</span><span>Studio Apartments</span><span>Premium Food Court</span><span>Double-Height Entertainment Zone</span><span>20,000 Sq.Ft. Supermarket</span><span>Greater Noida's Finest</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" aria-labelledby="about-h">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="about-img-wrap">
+        <img loading="lazy" decoding="async" width="640" height="480" src="https://svggolfavenue.com/images/svg-golf-avenue.jpeg" alt="SVG Golf Avenue exterior view of the commercial development">
+        <div class="about-badge">
+          <div class="num">3L+</div>
+          <div class="lbl">Sq. Ft. Development</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal" style="padding-top:20px;">
+      <span class="eyebrow">Project Overview</span>
+      <div class="divider"></div>
+      <h2 id="about-h" style="font-size:32px;margin-bottom:18px;">Greater Noida's Most Anticipated Commercial Landmark</h2>
+      <p>SVG Golf Avenue rises in Site-C, Greater Noida — developed by SVG Group as a complete business and entertainment destination. Retail shops span four levels, positioned for maximum daily footfall from the 5-screen multiplex, 5-star hotel guests, and the 20,000 sq. ft. hypermarket.</p>
+      <p>Above sits a double-height entertainment zone, 5,000 sq. ft. food court, banquet facilities, and premium studio apartments — everything an investor needs for consistent, compounding returns.</p>
+      <div class="figure-strip">
+        <div><div class="num">LG–2F</div><div class="cap">Retail Floors</div></div>
+        <div><div class="num">10K</div><div class="cap">Sq.Ft. Entertainment</div></div>
+        <div><div class="num">5K</div><div class="cap">Sq.Ft. Food Court</div></div>
+      </div>
+      <svg class="signature-svg reveal" viewBox="0 0 420 80" width="100%" height="80" aria-hidden="true">
+        <path d="M5,65 C60,20 110,75 170,35 C220,0 260,65 320,25 C355,5 380,38 415,18" fill="none" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E3B43D"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs>
+        <circle cx="415" cy="18" r="5" fill="#FFD700"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="pricing" id="pricing" aria-labelledby="pricing-h" style="--pricing-bg:url('https://svggolfavenue.com/images/svg-golf-avenue-noida.jpeg')">
+  <div class="wrap">
+    <div class="section-head reveal on-dark">
+      <span class="eyebrow" style="color:var(--gold-soft);">Investment</span>
+      <h2 id="pricing-h">Price List</h2>
+      <p>Limited first-phase inventory. Prices are revised upward with every launch phase — early investors lock in the best entry price.</p>
+    </div>
+    <div class="table-scroll reveal">
+    <table class="price-table">
+      <caption class="sr-only">Available unit types, sizes and status</caption>
+      <thead><tr><th scope="col">Sr. No</th><th scope="col">Unit Type</th><th scope="col">Size</th><th scope="col">Status</th><th scope="col">Price</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>Retail Shop (LG–2F)</td><td>On Request</td><td><span class="status-available">● Available</span></td><td><button class="tag-request" data-open="modalBg">Get Price</button></td></tr>
+        <tr><td>02</td><td>Food Court Unit</td><td>On Request</td><td><span class="status-available">● Available</span></td><td><button class="tag-request" data-open="modalBg">Get Price</button></td></tr>
+        <tr><td>03</td><td>Studio Apartment</td><td>On Request</td><td><span class="status-selling">● Fast Selling</span></td><td><button class="tag-request" data-open="modalBg">Get Price</button></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="price-note">*Prices subject to developer revision &amp; applicable taxes. Request the current price sheet via WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ===== WHY INVEST ===== -->
+<section class="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="section-head reveal on-dark">
+      <span class="eyebrow" style="color:var(--gold-soft);">The Investment Case</span>
+      <h2 id="why-h">Why SVG Golf Avenue Delivers Returns</h2>
+      <p>Every commercial project promises returns. Here's what actually drives footfall — and income — every single day.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="why-grid reveal">
+      <div class="why-item"><div class="ico" aria-hidden="true">🎬</div><h3>5-Screen Multiplex</h3><p>PVR cinema seating ~1,000 guests — guaranteed daily footfall for every shop on the floor.</p></div>
+      <div class="why-item"><div class="ico" aria-hidden="true">🎮</div><h3>Entertainment Zone</h3><p>10,000 sq.ft. zone + dedicated kids' area — repeat family visits built in by design.</p></div>
+      <div class="why-item"><div class="ico" aria-hidden="true">🛒</div><h3>20K Sq.Ft. Hypermarket</h3><p>Daily-essential demand anchored right beside your retail unit, 365 days a year.</p></div>
+      <div class="why-item"><div class="ico" aria-hidden="true">🚗</div><h3>1,000 Car Parking</h3><p>No walk-aways. Visitors park easily — and stay longer, spending more.</p></div>
+      <div class="why-item"><div class="ico" aria-hidden="true">🍽️</div><h3>Premium Food Court</h3><p>National &amp; international F&amp;B brands planned for the 5,000 sq.ft. food court.</p></div>
+      <div class="why-item"><div class="ico" aria-hidden="true">🏨</div><h3>5-Star Hotel &amp; Banquet</h3><p>Corporate footfall, events &amp; studio apartment demand — all under one roof.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOOR PLANS ===== -->
+<section class="floors" id="floor-plans" aria-labelledby="floors-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Layouts</span>
+      <h2 id="floors-h">Floor Plans</h2>
+      <p>Six levels of retail and leisure — click any plan to view it full screen.</p>
+    </div>
+    <div class="floor-grid reveal">
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/lower-ground-floor.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/lower-ground-floor.jpg" alt="Lower ground floor plan"></a></div><div class="cap">Lower Ground Floor <span class="view">View →</span></div></div>
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/ground-floor.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/ground-floor.jpg" alt="Ground floor plan"></a></div><div class="cap">Ground Floor <span class="view">View →</span></div></div>
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/first-floor-plan.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/first-floor-plan.jpg" alt="First floor plan"></a></div><div class="cap">First Floor <span class="view">View →</span></div></div>
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/second-floor-plan.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/second-floor-plan.jpg" alt="Second floor plan"></a></div><div class="cap">Second Floor <span class="view">View →</span></div></div>
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/third-floor-plan.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/third-floor-plan.jpg" alt="Third floor plan"></a></div><div class="cap">Third Floor <span class="view">View →</span></div></div>
+      <div class="floor-card"><div class="imgwrap"><a href="https://svggolfavenue.com/images/4-and-5th-floor-plan.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" width="600" height="450" src="https://svggolfavenue.com/images/4-and-5th-floor-plan.jpg" alt="Fourth and fifth floor plan"></a></div><div class="cap">4th &amp; 5th Floor <span class="view">View →</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOWCASE ===== -->
+<section class="showcase" id="gallery" aria-labelledby="showcase-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Inside the Project</span>
+      <h2 id="showcase-h">Retail, Dining &amp; Living — Under One Roof</h2>
+    </div>
+    <div class="showcase-grid reveal">
+      <div class="showcase-card"><img loading="lazy" decoding="async" width="450" height="600" src="https://svggolfavenue.com/images/retail-shop.jpg" alt="Retail shops interior"><div class="label"><span class="eyebrow">Commercial</span><h3>Retail Spaces</h3></div></div>
+      <div class="showcase-card"><img loading="lazy" decoding="async" width="450" height="600" src="https://svggolfavenue.com/images/food-courts-food.png" alt="Food court seating area"><div class="label"><span class="eyebrow">Dining</span><h3>Food Court</h3></div></div>
+      <div class="showcase-card"><img loading="lazy" decoding="async" width="450" height="600" src="https://svggolfavenue.com/images/Studio-apartment.jpg" alt="Studio apartment interior"><div class="label"><span class="eyebrow">Residential</span><h3>Studio Apartments</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="showcase" style="padding-top:0;" aria-label="Photo gallery">
+  <div class="wrap">
+    <div class="gallery-grid reveal">
+      <div class="gallery-item g1"><img loading="lazy" decoding="async" width="700" height="850" src="https://svggolfavenue.com/images/svg-golf-avenue.jpeg" alt="SVG Golf Avenue exterior"><div class="gtag">Exterior View</div></div>
+      <div class="gallery-item"><img loading="lazy" decoding="async" width="500" height="625" src="https://svggolfavenue.com/images/svg-golf-avenue-noida.jpeg" alt="Front facade of the development"><div class="gtag">Front Facade</div></div>
+      <div class="gallery-item"><img loading="lazy" decoding="async" width="500" height="625" src="https://svggolfavenue.com/images/retail-shop.jpg" alt="Retail interior"><div class="gtag">Retail Interior</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section class="location" id="location" aria-labelledby="location-h">
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--gold-soft);">Connectivity</span>
+      <div class="divider"></div>
+      <h2 id="location-h" style="color:#fff;font-size:clamp(26px,3vw,38px);">Positioned at the Centre of Greater Noida's Growth</h2>
+      <p style="color:rgba(247,242,231,.65);margin-top:12px;font-size:15.5px;">Site-C is Greater Noida's fastest-growing commercial corridor — dense residential catchment for guaranteed customers from day one.</p>
+      <ul class="loc-list">
+        <li><span class="mk" aria-hidden="true">✦</span> Prime location in Site-C, Greater Noida</li>
+        <li><span class="mk" aria-hidden="true">✦</span> 10 minutes from Noida Extension</li>
+        <li><span class="mk" aria-hidden="true">✦</span> Direct access to Noida–Greater Noida Link Road</li>
+        <li><span class="mk" aria-hidden="true">✦</span> 15 minutes from Pari Chowk</li>
+        <li><span class="mk" aria-hidden="true">✦</span> Close to Delta 1 Metro Station</li>
+        <li><span class="mk" aria-hidden="true">✦</span> Seamless connectivity to Noida &amp; Delhi NCR</li>
+      </ul>
+      <div style="margin-top:28px;">
+        <button class="btn btn-gold" data-open="modalBg">Get Location Map on WhatsApp</button>
+      </div>
+    </div>
+    <div class="reveal map-frame">
+      <img loading="lazy" decoding="async" width="600" height="600" src="https://svggolfavenue.com/images/site-c-gn.png" alt="Map showing SVG Golf Avenue location in Site-C, Greater Noida">
+    </div>
+  </div>
+</section>
+
+<!-- ===== AMENITIES ===== -->
+<section class="amenities" aria-labelledby="amenities-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">On-Site Facilities</span>
+      <h2 id="amenities-h">Amenities</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="am-grid reveal">
+      <div class="am-item"><img loading="lazy" decoding="async" width="40" height="40" src="https://svggolfavenue.com/images/cctv-camera.png" alt=""><p>24×7 CCTV Surveillance</p></div>
+      <div class="am-item"><img loading="lazy" decoding="async" width="40" height="40" src="https://svggolfavenue.com/images/parking.png" alt=""><p>Parking for 1,000 Cars</p></div>
+      <div class="am-item"><img loading="lazy" decoding="async" width="40" height="40" src="https://svggolfavenue.com/images/policeman.png" alt=""><p>Trained Security Staff</p></div>
+      <div class="am-item"><img loading="lazy" decoding="async" width="40" height="40" src="https://svggolfavenue.com/images/lift.png" alt=""><p>High-Speed Lifts</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEVELOPER ===== -->
+<section class="developer" aria-labelledby="dev-h">
+  <div class="wrap dev-grid">
+    <div class="dev-badge reveal">
+      <div class="num">15+</div>
+      <div class="lbl">Years Delivering Commercial Real Estate in Noida</div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">The Developer</span>
+      <div class="divider"></div>
+      <h2 id="dev-h" style="font-size:30px;margin-bottom:16px;">SVG Group</h2>
+      <p>SVG Group is one of Noida's fastest-growing commercial developers — known for delivering projects with genuine infrastructure that earns real returns, not just premium brochures.</p>
+      <p>The group specialises in commercial sales, leasing and renting, working alongside established developers to expand Noida's commercial landscape.</p>
+      <div style="margin-top:22px;">
+        <button class="btn btn-dark" data-open="modalBg">Request Developer Brochure</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROI CALCULATOR ===== -->
+<section id="roiSection" aria-labelledby="roi-h">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="sec-tag">💰 Investment Calculator</span>
+      <h2 id="roi-h" class="sec-h" style="color:#fff;">See Your Returns Before You Invest</h2>
+      <p style="color:rgba(247,242,231,.55);max-width:520px;margin:0 auto;">Adjust the sliders to see projected rental income and capital appreciation over time.</p>
+    </div>
+    <div class="roi-wrap reveal">
+      <div>
+        <div class="roi-label"><span>Investment Amount</span><strong id="invAmt">₹60 Lac</strong></div>
+        <label for="invSlider" class="sr-only">Investment amount in lac</label>
+        <input type="range" class="roi-slider" id="invSlider" min="40" max="200" value="60" step="5">
+
+        <div class="roi-label"><span>Holding Period</span><strong id="holdPeriod">5 Years</strong></div>
+        <label for="holdSlider" class="sr-only">Holding period in years</label>
+        <input type="range" class="roi-slider" id="holdSlider" min="1" max="10" value="5" step="1">
+
+        <div class="roi-label"><span>Rental Yield (p.a.)</span><strong id="yieldPct">7%</strong></div>
+        <label for="yieldSlider" class="sr-only">Rental yield percentage per annum</label>
+        <input type="range" class="roi-slider" id="yieldSlider" min="4" max="12" value="7" step="0.5">
+
+        <div class="roi-label"><span>Capital Appreciation (p.a.)</span><strong id="appPct">10%</strong></div>
+        <label for="appSlider" class="sr-only">Capital appreciation percentage per annum</label>
+        <input type="range" class="roi-slider" id="appSlider" min="5" max="20" value="10" step="1">
+
+        <div class="roi-result">
+          <div class="roi-res-item"><div class="val" id="rentalIncome">₹21L</div><div class="key">Total Rental Income</div></div>
+          <div class="roi-res-item"><div class="val" id="capitalGain">₹97L</div><div class="key">Capital Gain</div></div>
+          <div class="roi-res-item"><div class="val" id="totalReturn">₹118L</div><div class="key">Total Return</div></div>
+          <div class="roi-res-item"><div class="val" id="roiPct">197%</div><div class="key">Overall ROI</div></div>
+        </div>
+        <button class="btn btn-gold btn-block" data-open="modalBg" style="margin-top:16px;padding:14px;">⚡ Lock This Rate — Enquire Now</button>
+      </div>
+      <div>
+        <div style="font-size:12px;color:rgba(247,242,231,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;text-align:center;">Projected Value Over Time</div>
+        <div class="roi-chart" id="roiChart" role="img" aria-label="Bar chart of projected property value by year"></div>
+        <div class="roi-summary">
+          <div class="lbl">Final Property Value</div>
+          <div class="val" id="finalVal">₹1.57 Cr</div>
+          <div class="sub">vs your investment of <span id="invRef">₹60L</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SITE VISIT BOOKING ===== -->
+<section id="siteVisitSection" aria-labelledby="sv-h">
+  <div class="wrap">
+    <div class="sv-wrap">
+      <div class="reveal">
+        <span class="sec-tag">📅 Book a Site Visit</span>
+        <h2 id="sv-h" class="sec-h" style="color:#fff;">See It to Believe It</h2>
+        <p style="color:rgba(247,242,231,.6);margin-bottom:28px;line-height:1.8;">Our sales team will personally take you through the entire project — floor plans, amenities, and your potential unit. Complimentary pickup available from Delhi NCR.</p>
+        <div class="sv-perk"><span class="ico" aria-hidden="true">🚗</span><div><strong>Free Pickup from Delhi NCR</strong><span>We arrange cab from your location</span></div></div>
+        <div class="sv-perk"><span class="ico" aria-hidden="true">☕</span><div><strong>Complimentary Lunch &amp; Refreshments</strong><span>Hosted by SVG team at site</span></div></div>
+        <div class="sv-perk highlight"><span class="ico" aria-hidden="true">🎁</span><div><strong>Visit Gift Worth ₹2,000</strong><span>Special gift for every site visitor</span></div></div>
+      </div>
+      <div class="reveal">
+        <div class="sv-card">
+          <h3>Schedule Your Visit</h3>
+          <p class="sub">Choose a date &amp; time — confirmation in 15 minutes</p>
+          <div class="field-label" id="dateLabel">Select Date <span class="live-note" id="dateMonthLabel"></span></div>
+          <div class="date-grid" id="dateGrid" role="group" aria-labelledby="dateLabel"></div>
+          <button type="button" class="more-dates-btn" id="moreDatesBtn">+ Show More Dates</button>
+          <div class="field-label" id="timeLabel">Preferred Time</div>
+          <div class="time-grid" role="group" aria-labelledby="timeLabel">
+            <button type="button" class="time-btn">10:00 AM</button>
+            <button type="button" class="time-btn">12:00 PM</button>
+            <button type="button" class="time-btn">2:00 PM</button>
+            <button type="button" class="time-btn">4:00 PM</button>
+            <button type="button" class="time-btn">6:00 PM</button>
+            <button type="button" class="time-btn disabled" disabled>8:00 PM ✗</button>
+          </div>
+          <label class="sr-only" for="svName">Full name</label>
+          <input class="sv-input" id="svName" placeholder="Your Full Name *" required autocomplete="name">
+          <label class="sr-only" for="svPhone">Mobile number</label>
+          <input class="sv-input" id="svPhone" placeholder="Mobile Number *" type="tel" required autocomplete="tel">
+          <label class="sr-only" for="svCity">Pickup city</label>
+          <input class="sv-input" id="svCity" placeholder="Pickup City (optional)" autocomplete="address-level2">
+          <button type="button" class="sv-submit" id="bookSiteVisitBtn">📅 Confirm Site Visit via WhatsApp</button>
+          <div class="sv-badges">
+            <div class="sv-badge">✅ Free pickup</div>
+            <div class="sv-badge">🎁 Visit gift</div>
+            <div class="sv-badge">⚡ Instant confirm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" aria-labelledby="final-cta-h" style="--final-cta-bg:url('https://svggolfavenue.com/images/site-c-gn.png')">
+  <div class="wrap inner">
+    <span class="eyebrow" style="color:var(--gold-soft);">Limited First-Phase Inventory</span>
+    <h2 id="final-cta-h" style="margin-top:16px;">Lock In Today's Price Before the Next Phase</h2>
+    <p>Speak with our advisor for floor availability, payment plans &amp; projected rental yield — within 15 minutes.</p>
+    <div class="final-ctas">
+      <button class="btn btn-gold" data-open="modalBg">🚀 Request Callback</button>
+      <a class="btn btn-outline-gold" href="https://wa.me/916398921556?text=Hi%2C%20I%20am%20interested%20in%20SVG%20Golf%20Avenue.%20Please%20share%20the%20latest%20details." target="_blank" rel="noopener">💬 WhatsApp Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Questions</span>
+      <h2 id="faq-h">Frequently Asked</h2>
+    </div>
+    <div class="faq-grid reveal">
+      <details class="faq-item" open><summary>Is parking available at SVG Golf Avenue?</summary><div class="a">Yes — parking for up to 1,000 cars is provided. No visitor ever loses their purchase decision to a parking hunt.</div></details>
+      <details class="faq-item"><summary>Is the project safe and family-friendly?</summary><div class="a">Fully secure with 24×7 CCTV and trained security, plus a dedicated kids' entertainment zone for family visitors.</div></details>
+      <details class="faq-item"><summary>Are studio apartments available for purchase?</summary><div class="a">Yes — premium studio apartments are part of the development, alongside meeting and co-working facilities for corporate use.</div></details>
+      <details class="faq-item"><summary>Is there a multiplex on site?</summary><div class="a">Yes — a 5-screen multiplex seating close to 1,000 guests is integrated into the project, driving daily consistent footfall.</div></details>
+      <details class="faq-item"><summary>How far is SVG Golf Avenue from Delhi?</summary><div class="a">Delhi is approximately 15 km away, with easy access via the Noida–Greater Noida Link Road and Delta 1 Metro Station nearby.</div></details>
+      <details class="faq-item"><summary>What is the starting price?</summary><div class="a">Retail units and studio apartments start from ₹40 Lac*. Share your details via the enquiry form to receive the current price sheet on WhatsApp.</div></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brandmark"><span class="dot" aria-hidden="true"></span> SVG Golf Avenue</div>
+        <p class="about-foot">A 3 lakh sq. ft. commercial &amp; entertainment landmark by SVG Group in Site-C, Greater Noida — retail, dining, leisure and studio apartments under one roof.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#pricing">Price List</a></li>
+          <li><a href="#floor-plans">Floor Plans</a></li>
+          <li><a href="#location">Location Map</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Plot No. Commercial Site-C(H), Industrial Area, Surajpur, Greater Noida</li>
+          <li><a href="tel:+916398921556">+91-63989 21556</a></li>
+          <li><a href="https://wa.me/916398921556" target="_blank" rel="noopener">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SVG Golf Avenue. All rights reserved.</span>
+      <span>An authorised marketing initiative.</span>
+    </div>
+    <p class="disclaimer">Disclaimer: This is not an official website of SVG Group. We are an authorised marketing partner. Images are for representation purposes only. All information is subject to change as per developer plans. *Prices, terms and inventory are subject to revision by the developer.</p>
+  </div>
+</footer>
+
+<!-- ===== FLOATING BUTTONS ===== -->
+<div class="float-btns">
+  <a class="float-btn float-wa" href="https://wa.me/916398921556?text=Hi%2C%20I%20am%20interested%20in%20SVG%20Golf%20Avenue%2C%20Site-C%20Greater%20Noida.%20Please%20share%20the%20latest%20details." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="tooltip">Chat on WhatsApp</span>
+    <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.85.745 5.52 2.044 7.85L0 32l8.35-2.044A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.007 22.643c-.333.938-1.94 1.826-2.664 1.938-.72.112-1.62.16-2.613-.165a23.9 23.9 0 01-2.364-.875c-4.163-1.8-6.882-5.972-7.093-6.25-.21-.278-1.72-2.285-1.72-4.355s1.09-3.088 1.477-3.51c.387-.42.843-.525 1.124-.525.28 0 .562.003.808.016.26.013.608-.099.952.727.354.846 1.2 2.916 1.305 3.127.105.21.175.456.035.735-.14.28-.21.456-.42.7-.21.245-.44.546-.63.735-.21.21-.428.436-.184.856.245.42 1.088 1.794 2.34 2.907 1.608 1.434 2.963 1.878 3.383 2.088.42.21.665.175.91-.105.244-.28 1.05-1.225 1.33-1.645.28-.42.56-.35.945-.21.385.14 2.45 1.155 2.87 1.365.42.21.7.315.805.49.105.174.105 1.013-.228 1.95z"/></svg>
+  </a>
+  <a class="float-btn float-call" href="tel:+916398921556" aria-label="Call now">
+    <span class="tooltip">Call Now</span>
+    <svg viewBox="0 0 32 32" fill="#000" aria-hidden="true"><path d="M6.6 14.6c2.8 5.4 7.4 10 12.8 12.8l4.3-4.3c.5-.5 1.3-.7 2-.4 2.2.7 4.5 1.1 7 1.1.8 0 1.5.7 1.5 1.5v6.8C33.2 32.7 32.5 33.5 31.7 33.5 15.1 33.5.5 18.9.5 2.3.5 1.5 1.2.8 2 .8h6.8c.8 0 1.5.7 1.5 1.5 0 2.5.4 4.8 1.1 7 .2.7 0 1.5-.4 2L6.6 14.6z"/></svg>
+  </a>
+</div>
+
+<!-- ===== MOBILE STICKY CTA ===== -->
+<div class="mobile-sticky" id="mobileCta">
+  <a href="tel:+916398921556" class="mob-btn mob-call"><span aria-hidden="true">📞</span>Call Now</a>
+  <a href="https://wa.me/916398921556?text=Hi%21+I+want+to+know+more+about+SVG+Golf+Avenue" target="_blank" rel="noopener" class="mob-btn mob-wa"><span aria-hidden="true">💬</span>WhatsApp</a>
+  <a href="#siteVisitSection" class="mob-btn mob-visit"><span aria-hidden="true">📅</span>Book Visit</a>
+</div>
+
+<!-- ===== LIVE ACTIVITY FEED (populated by JS) ===== -->
+<div id="activityFeed" aria-live="polite"></div>
+
+<!-- ===== MAIN ENQUIRY MODAL ===== -->
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modal-h">
+  <div class="modal">
+    <button class="close" data-close="modalBg" aria-label="Close dialog">×</button>
+    <h3 id="modal-h">Get Price List on WhatsApp</h3>
+    <p class="sub">Share your details — we'll send the price sheet, floor plan &amp; payment plan instantly.</p>
+    <form id="modalForm" data-wa-form aria-label="Get price list">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="m-name">Full Name *</label>
+          <input id="m-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="m-phone">Mobile No. *</label>
+          <input id="m-phone" type="tel" name="phone" placeholder="10-digit number" required pattern="[0-9]{10}" autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label for="m-email">Email</label>
+          <input id="m-email" type="email" name="email" placeholder="Optional" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="m-interest">Interested In</label>
+          <select id="m-interest" name="interest">
+            <option value="">Select Unit</option>
+            <option>Retail Shop</option>
+            <option>Studio Apartment</option>
+            <option>Food Court Unit</option>
+            <option>Any Available</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="m-budget">Budget</label>
+          <select id="m-budget" name="budget">
+            <option value="">Select Budget</option>
+            <option>₹40L – ₹60L</option>
+            <option>₹60L – ₹1Cr</option>
+            <option>₹1Cr – ₹2Cr</option>
+            <option>Above ₹2Cr</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="form-submit" style="margin-top:14px;"><span>💬 Send on WhatsApp &amp; Get Best Price</span></button>
+    </form>
+    <div class="card-trust" style="margin-top:14px;">🔒 100% Secure · No Spam</div>
+  </div>
+</div>
+
+<!-- ===== FAQ SCROLL POPUP ===== -->
+<div class="faq-popup-bg" id="faqPopup" role="dialog" aria-modal="true" aria-labelledby="faqpopup-h">
+  <div class="faq-popup">
+    <button class="close" data-close="faqPopup" aria-label="Close dialog">×</button>
+    <div class="popup-badge">✦ Limited Inventory Left</div>
+    <h3 id="faqpopup-h">Still Have Questions?</h3>
+    <p class="sub">Talk to our investment advisor directly. We'll share floor availability, payment plans and expected rental yield — all on WhatsApp in minutes.</p>
+    <form id="faqPopupForm" data-wa-form aria-label="Ask a question">
+      <div class="form-row" style="margin-bottom:10px;">
+        <div class="form-field">
+          <label for="f-name">Name *</label>
+          <input id="f-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="f-phone">Mobile *</label>
+          <input id="f-phone" type="tel" name="phone" placeholder="10-digit" required pattern="[0-9]{10}" autocomplete="tel">
+        </div>
+        <div class="form-field full">
+          <label for="f-query">Your Query</label>
+          <input id="f-query" type="text" name="query" placeholder="e.g. Price of retail shop on ground floor">
+        </div>
+      </div>
+      <button type="submit" class="form-submit"><span>💬 Ask on WhatsApp Now</span></button>
+    </form>
+    <div class="card-trust" style="margin-top:14px;">Response within 15 minutes · No spam ever</div>
+  </div>
+</div>
+
+<!-- ===== EXIT INTENT POPUP ===== -->
+<div id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="exit-h">
+  <div class="exit-card">
+    <button class="exit-x" data-close="exitPopup" aria-label="Close dialog">✕</button>
+    <div class="exit-top"><span>⚠️ Wait — Before You Go!</span></div>
+    <div class="exit-body">
+      <h2 id="exit-h">Special Pre-Launch Price<br>Ends Soon!</h2>
+      <p>You're leaving without claiming your exclusive pre-launch price. Units at ₹40 Lac are limited — prices go up after each phase.</p>
+      <div class="exit-offer">
+        <div class="ico" aria-hidden="true">🎁</div>
+        <div><strong>Exclusive Offer for You</strong><span>Free floor plan + price list + priority callback within 10 mins</span></div>
+      </div>
+      <div class="exit-actions">
+        <button class="exit-wa" id="exitWaBtn" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get Free Price List on WhatsApp
+        </button>
+        <button class="exit-close" data-close="exitPopup" type="button">No thanks, I'll miss this offer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   SVG GOLF AVENUE — MAIN.JS
+   Clean ES6, no dependencies. Sections:
+   1. Config
+   2. Utilities (throttle/debounce)
+   3. Header scroll state
+   4. Scroll reveal + counters (IntersectionObserver)
+   5. Countdown timer
+   6. Modals & popups (event delegation)
+   7. WhatsApp form submit
+   8. ROI calculator
+   9. Site visit booking
+   10. Scarcity ticker
+   11. Live activity feed
+   12. Exit intent
+   ========================================================================= */
+(() => {
+  'use strict';
+
+  /* ---------- 1. Config ---------- */
+  const WHATSAPP_NUMBER = '916398921556';
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 2. Utilities ---------- */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+  function throttleRaf(fn) {
+    let ticking = false;
+    return (...args) => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        fn(...args);
+        ticking = false;
+      });
+    };
+  }
+
+  function waLink(message) {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  }
+
+  /* ---------- 3. Header scroll state ---------- */
+  const header = $('header.main');
+  if (header) {
+    const onScroll = throttleRaf(() => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ---------- 3b. Mobile nav toggle ---------- */
+  (() => {
+    const toggle = $('#navToggle');
+    const nav = $('#mobileNav');
+    if (!toggle || !nav) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      nav.hidden = !open;
+    }
+
+    toggle.addEventListener('click', () => setOpen(nav.hidden));
+    nav.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !nav.hidden) setOpen(false);
+    });
+  })();
+
+  /* ---------- 4. Scroll reveal + counters ---------- */
+  if (prefersReducedMotion) {
+    $$('.reveal, .signature-svg').forEach((el) => el.classList.add('in'));
+  } else {
+    const revealIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            revealIO.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    $$('.reveal, .signature-svg').forEach((el) => revealIO.observe(el));
+  }
+
+  const counterIO = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        let start = null;
+
+        function step(ts) {
+          if (start === null) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          el.textContent = prefix + Math.round(eased * target).toLocaleString('en-IN') + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+
+        if (prefersReducedMotion) {
+          el.textContent = prefix + target.toLocaleString('en-IN') + suffix;
+        } else {
+          requestAnimationFrame(step);
+        }
+        counterIO.unobserve(el);
+      });
+    },
+    { threshold: 0.4 }
+  );
+  $$('[data-count]').forEach((el) => counterIO.observe(el));
+
+  /* ---------- 5. Countdown timer ---------- */
+  (() => {
+    const daysEl = $('#cd-days');
+    if (!daysEl) return;
+    const target = new Date();
+    target.setDate(target.getDate() + 15);
+    target.setHours(23, 59, 59, 0);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const fields = {
+      days: $('#cd-days'),
+      hours: $('#cd-hours'),
+      mins: $('#cd-mins'),
+      secs: $('#cd-secs'),
+    };
+
+    function tick() {
+      const diff = Math.max(target - new Date(), 0);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      fields.days.textContent = pad(d);
+      fields.hours.textContent = pad(h);
+      fields.mins.textContent = pad(m);
+      fields.secs.textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ---------- 6. Modals & popups (event delegation) ---------- */
+  function openOverlay(el) {
+    if (el) el.classList.add('show');
+  }
+  function closeOverlay(el) {
+    if (el) el.classList.remove('show');
+  }
+
+  document.addEventListener('click', (e) => {
+    const openTarget = e.target.closest('[data-open]');
+    if (openTarget) {
+      openOverlay($('#' + openTarget.dataset.open));
+      return;
+    }
+    const closeTarget = e.target.closest('[data-close]');
+    if (closeTarget) {
+      closeOverlay($('#' + closeTarget.dataset.close));
+      return;
+    }
+    // click on overlay backdrop closes it
+    if (e.target.matches('.modal-bg, .faq-popup-bg, #exitPopup')) {
+      closeOverlay(e.target);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      $$('.modal-bg.show, .faq-popup-bg.show, #exitPopup.show').forEach(closeOverlay);
+    }
+  });
+
+  /* FAQ popup — triggers once, when the FAQ section enters view */
+  const faqSection = $('#faq');
+  const faqPopup = $('#faqPopup');
+  if (faqSection && faqPopup) {
+    let shown = false;
+    const faqIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shown) {
+            shown = true;
+            setTimeout(() => openOverlay(faqPopup), 600);
+            faqIO.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    faqIO.observe(faqSection);
+  }
+
+  /* ---------- 7. WhatsApp form submit ---------- */
+  function submitToWhatsApp(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const get = (k) => (data.get(k) || '').toString().trim();
+
+    let msg = 'Hello! I am interested in SVG Golf Avenue, Site-C Greater Noida.\n\n';
+    msg += `Name: ${get('name')}\n`;
+    msg += `Phone: ${get('phone')}\n`;
+    if (get('interest')) msg += `Interested In: ${get('interest')}\n`;
+    if (get('budget')) msg += `Budget: ${get('budget')}\n`;
+    if (get('query')) msg += `Query: ${get('query')}\n`;
+    msg += '\nPlease share the latest price list and floor plan. Thank you!';
+
+    window.open(waLink(msg), '_blank', 'noopener');
+    $$('.modal-bg.show, .faq-popup-bg.show').forEach(closeOverlay);
+    form.reset();
+    return false;
+  }
+  $$('form[data-wa-form]').forEach((form) => form.addEventListener('submit', submitToWhatsApp));
+
+  /* ---------- 8. ROI calculator ---------- */
+  (() => {
+    const invSlider = $('#invSlider');
+    if (!invSlider) return;
+    const holdSlider = $('#holdSlider');
+    const yieldSlider = $('#yieldSlider');
+    const appSlider = $('#appSlider');
+    const chart = $('#roiChart');
+    const barColors = ['#6D28D9', '#7C3AED', '#8B5CF6', '#A78BFA', '#C4B5FD', '#DDD6FE', '#EDE9FE', '#F5F3FF', '#4ADE80', '#22C55E'];
+
+    function fmtCr(lac) {
+      return lac >= 100 ? `₹${(lac / 100).toFixed(2)} Cr` : `₹${Math.round(lac)}L`;
+    }
+
+    function calcROI() {
+      const inv = parseInt(invSlider.value, 10);
+      const hold = parseInt(holdSlider.value, 10);
+      const yld = parseFloat(yieldSlider.value) / 100;
+      const app = parseFloat(appSlider.value) / 100;
+
+      $('#invAmt').textContent = `₹${inv} Lac`;
+      $('#holdPeriod').textContent = `${hold} Year${hold > 1 ? 's' : ''}`;
+      $('#yieldPct').textContent = `${(yld * 100).toFixed(0)}%`;
+      $('#appPct').textContent = `${(app * 100).toFixed(0)}%`;
+
+      const rental = inv * yld * hold;
+      const finalProp = inv * Math.pow(1 + app, hold);
+      const capGain = finalProp - inv;
+      const total = rental + capGain;
+      const roi = Math.round((total / inv) * 100);
+
+      $('#rentalIncome').textContent = fmtCr(rental);
+      $('#capitalGain').textContent = fmtCr(capGain);
+      $('#totalReturn').textContent = fmtCr(total);
+      $('#roiPct').textContent = `${roi}%`;
+      $('#finalVal').textContent = fmtCr(finalProp);
+      $('#invRef').textContent = `₹${inv}L`;
+
+      chart.innerHTML = '';
+      const frag = document.createDocumentFragment();
+      for (let yr = 1; yr <= hold; yr++) {
+        const val = inv * Math.pow(1 + app, yr);
+        const h = Math.max(20, Math.round((val / finalProp) * 160));
+        const wrap = document.createElement('div');
+        wrap.className = 'roi-bar-wrap';
+        wrap.innerHTML = `<div class="roi-bar-val">${fmtCr(val)}</div><div class="roi-bar" style="height:${h}px;background:linear-gradient(180deg,${barColors[Math.min(yr - 1, 9)]},${barColors[Math.min(yr, 9)]})"></div><div class="roi-bar-lbl">Yr ${yr}</div>`;
+        frag.appendChild(wrap);
+      }
+      chart.appendChild(frag);
+    }
+
+    [invSlider, holdSlider, yieldSlider, appSlider].forEach((slider) =>
+      slider.addEventListener('input', calcROI)
+    );
+    calcROI();
+  })();
+
+  /* ---------- 9. Site visit booking ---------- */
+  (() => {
+    const grid = $('#dateGrid');
+    if (!grid) return;
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // Always computed from the visitor's current date/time (IST on Indian devices) —
+    // this list re-generates itself on every page load, so it never goes stale.
+    const today = new Date();
+    const monthsSeen = new Set([monthNames[today.getMonth()] + ' ' + today.getFullYear()]);
+    const monthLabel = $('#dateMonthLabel');
+    const moreBtn = $('#moreDatesBtn');
+    const MAX_DAYS_AHEAD = 60; // don't offer bookings more than 2 months out
+    let dayOffset = 0; // how many calendar days we've already scanned past "today"
+    let lastMonthRendered = today.getMonth();
+
+    function renderBatch(count) {
+      const frag = document.createDocumentFragment();
+      let added = 0;
+      while (added < count && dayOffset < MAX_DAYS_AHEAD) {
+        dayOffset++;
+        const d = new Date(today);
+        d.setDate(today.getDate() + dayOffset);
+        if (d.getDay() === 0) continue; // skip Sunday (site closed)
+
+        const monthChanged = d.getMonth() !== lastMonthRendered;
+        lastMonthRendered = d.getMonth();
+        monthsSeen.add(monthNames[d.getMonth()] + ' ' + d.getFullYear());
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-btn';
+        btn.dataset.iso = d.toISOString().slice(0, 10);
+        btn.innerHTML = `<span class="day">${dayNames[d.getDay()]}</span><span class="num">${d.getDate()}${monthChanged || added === 0 ? ' ' + monthNames[d.getMonth()] : ''}</span>`;
+        frag.appendChild(btn);
+        added++;
+      }
+      grid.appendChild(frag);
+      if (monthLabel) monthLabel.textContent = '· ' + Array.from(monthsSeen).join(' – ');
+      if (moreBtn && dayOffset >= MAX_DAYS_AHEAD) {
+        moreBtn.textContent = 'No further dates available';
+        moreBtn.disabled = true;
+      }
+    }
+
+    renderBatch(7);
+    if (moreBtn) moreBtn.addEventListener('click', () => renderBatch(7));
+
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.date-btn');
+      if (!btn) return;
+      $$('.date-btn', grid).forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+
+    const timeGrid = $('.time-grid');
+    if (timeGrid) {
+      timeGrid.addEventListener('click', (e) => {
+        const btn = e.target.closest('.time-btn');
+        if (!btn || btn.classList.contains('disabled')) return;
+        $$('.time-btn', timeGrid).forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    }
+
+    const bookBtn = $('#bookSiteVisitBtn');
+    if (bookBtn) {
+      bookBtn.addEventListener('click', () => {
+        const name = $('#svName').value.trim();
+        const phone = $('#svPhone').value.trim();
+        const city = $('#svCity').value.trim();
+        const dateEl = $('.date-btn.active', grid);
+        const timeEl = $('.time-btn.active', timeGrid);
+
+        if (!name || !phone) {
+          alert('Please enter your name and mobile number.');
+          return;
+        }
+        const dateStr = dateEl
+          ? `${$('.day', dateEl).textContent} ${$('.num', dateEl).textContent.replace(/\s+\w{3}$/, '')} (${dateEl.dataset.iso})`
+          : 'any day';
+        const timeStr = timeEl ? timeEl.textContent : 'any time';
+
+        let msg = 'Hi! I want to book a site visit for SVG Golf Avenue.\n\n';
+        msg += `Name: ${name}\n`;
+        msg += `Phone: ${phone}\n`;
+        msg += `Date: ${dateStr}\n`;
+        msg += `Time: ${timeStr}\n`;
+        if (city) msg += `Pickup from: ${city}\n`;
+        msg += '\nPlease confirm my visit. Thank you!';
+
+        window.open(waLink(msg), '_blank', 'noopener');
+      });
+    }
+  })();
+
+  /* ---------- 10. Scarcity ticker (slow, realistic decrement) ---------- */
+  (() => {
+    const el = $('#unitsLeft');
+    if (!el) return;
+    let unitCount = parseInt(el.textContent, 10) || 6;
+    setInterval(() => {
+      if (Math.random() < 0.01 && unitCount > 1) {
+        unitCount--;
+        el.textContent = unitCount;
+      }
+    }, 30000);
+  })();
+
+  /* ---------- 11. Live activity feed ---------- */
+  (() => {
+    const feed = $('#activityFeed');
+    if (!feed) return;
+    const activities = [
+      { av: '👨', name: 'Rajesh K.', city: 'Noida', action: 'just booked a site visit', time: '2 min ago' },
+      { av: '👩', name: 'Priya S.', city: 'Delhi', action: 'enquired about Studio Apt', time: '5 min ago' },
+      { av: '👨', name: 'Amit V.', city: 'Gurgaon', action: 'downloaded price list', time: '8 min ago' },
+      { av: '👩', name: 'Sunita M.', city: 'Faridabad', action: 'requested callback', time: '11 min ago' },
+      { av: '👨', name: 'Vikram R.', city: 'Greater Noida', action: 'booked a site visit', time: '15 min ago' },
+      { av: '👩', name: 'Kavita P.', city: 'Indirapuram', action: 'enquired about retail shop', time: '18 min ago' },
+      { av: '👨', name: 'Deepak T.', city: 'Ghaziabad', action: 'downloaded floor plan', time: '22 min ago' },
+      { av: '👩', name: 'Neha G.', city: 'Dwarka', action: 'just booked a site visit', time: '26 min ago' },
+    ];
+    let idx = 0;
+
+    function showNext() {
+      const a = activities[idx % activities.length];
+      idx++;
+      const pill = document.createElement('div');
+      pill.className = 'activity-pill';
+      pill.setAttribute('role', 'status');
+      pill.innerHTML = `<div class="av">${a.av}</div><div class="txt"><strong>${a.name} from ${a.city}</strong><span>${a.action} · ${a.time}</span></div><div class="dot-live"></div>`;
+      feed.appendChild(pill);
+      requestAnimationFrame(() => pill.classList.add('show'));
+      setTimeout(() => {
+        pill.classList.remove('show');
+        setTimeout(() => pill.remove(), 500);
+      }, 5000);
+    }
+
+    if (!prefersReducedMotion) {
+      setTimeout(() => {
+        showNext();
+        setInterval(showNext, 9000);
+      }, 6000);
+    }
+  })();
+
+  /* ---------- 12. Exit intent ---------- */
+  (() => {
+    const popup = $('#exitPopup');
+    if (!popup) return;
+    let shown = false;
+
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 10 && !shown) {
+        shown = true;
+        openOverlay(popup);
+      }
+    });
+
+    if (window.innerWidth < 780) {
+      setTimeout(() => {
+        if (!shown) {
+          shown = true;
+          openOverlay(popup);
+        }
+      }, 45000);
+    }
+
+    const exitWaBtn = $('#exitWaBtn');
+    if (exitWaBtn) {
+      exitWaBtn.addEventListener('click', () => {
+        window.open(
+          waLink('Hi! I was on your website and want the price list for SVG Golf Avenue — please share details.'),
+          '_blank',
+          'noopener'
+        );
+        closeOverlay(popup);
+      });
+    }
+  })();
+})();
+
+</script>
+</body>
+</html>
